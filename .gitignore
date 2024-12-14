@@ -1,0 +1,64 @@
+# Compiled object files
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+*.def
+
+# Shared objects (Linux)
+*.so
+*.so.*
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+
+# VSCode settings
+.vscode/
+
+# CMake build directory
+/build/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Other generated files
+*.d
+*.dep
+*.dll
+*.dylib
+*.elf
+*.lst
+*.map
+*.suo
+*.ncb
+*.user
+*.sdf
+*.opendb
+*.tlog
+*.VC.db
+*.VC.opendb
