@@ -83,3 +83,13 @@ void HAL_Delay(uint32_t delay_ms)
   }  >RAM_D1 :SgInfo
   ```
   - Layout of the memory in this script should be maintained, STM32CubeProgrammer is very finnicky 
+  - Modify default generated linker flags in `cmake/gcc-arm-none-eabi.cmake` to include unused sections
+  ```c
+set(CMAKE_C_LINK_FLAGS "${CMAKE_C_LINK_FLAGS} -T \"${CMAKE_SOURCE_DIR}/stm32h723zgtx_flash.ld\"")
+set(CMAKE_C_LINK_FLAGS "${CMAKE_C_LINK_FLAGS} --specs=nano.specs")
+set(CMAKE_C_LINK_FLAGS "${CMAKE_C_LINK_FLAGS} -Wl,-Map,${CMAKE_PROJECT_NAME}.map")
+set(CMAKE_C_LINK_FLAGS "${CMAKE_C_LINK_FLAGS} -lc -lm")
+set(CMAKE_C_LINK_FLAGS "${CMAKE_C_LINK_FLAGS} -Wl,--print-memory-usage")
+
+set(CMAKE_CXX_LINK_FLAGS "${CMAKE_C_LINK_FLAGS} -lstdc++ -lsupc++")
+  ```

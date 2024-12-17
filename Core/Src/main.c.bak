@@ -25,8 +25,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "stdio.h"
 #include "w25q64.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -47,10 +47,6 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-uint8_t txbuf[] = "Edwincito y brenda!\r\n";
-uint8_t txbuf2[] = "A\r\n";
-
-HAL_StatusTypeDef ret = 0;
 
 /* USER CODE END PV */
 
@@ -63,11 +59,21 @@ static void MPU_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-int _write(int file, uint8_t *data, int len)
-{
-  HAL_UART_Transmit(&huart3, (uint8_t *)data, len, 1000);
-  return len;
-}
+// int _write(int file, char *data, int len)
+// {
+//   UNUSED(file);
+//   // Transmit data using UART2
+//   for (int i = 0; i < len; i++)
+//   {
+//     // Send the character
+//     USART3->TDR = (uint16_t)data[i];
+//     // Wait for the transmit buffer to be empty
+//     while (!(USART3->ISR & USART_ISR_TC))
+//       ;
+//   }
+//   return len;
+// }
+
 /* USER CODE END 0 */
 
 /**
@@ -78,7 +84,7 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-//
+
   /* USER CODE END 1 */
 
   /* MPU Configuration--------------------------------------------------------*/
@@ -98,14 +104,14 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-//
+
   /* USER CODE END Init */
 
   /* Configure the system clock */
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-//
+
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -113,40 +119,48 @@ int main(void)
   MX_OCTOSPI1_Init();
   MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
-//
+  // HAL_Delay(2000);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-//
-//   ret = W25Q128_OCTO_SPI_Init(&hospi1);
-//   // read device ID
-//
-//   printf("Init: %s \r\n", (ret ? "Fail" : "Success"));
-//   ret = W25Q128_OSPI_Erase_Chip(&hospi1);
-//   //ret = W25Q128_OSPI_EraseSector(&hospi1, 0x000000, 0x0FFFF);
-//   printf("Erase: %s \r\n", (ret ? "Fail" : "Success"));
-//
-//   ret = W25Q128_OSPI_Write(&hospi1, txbuf, 0x1450 , sizeof(txbuf));
-//   printf("Write: %s \r\n", (ret ? "Fail" : "Success"));
-//
-//   // ret = W25Q128_OSPI_Read(&hospi1, rxbuf, 0, sizeToRead);
-//   // printf("Read : %s \r\n", rxbuf);
-//   ret = W25Q128_OSPI_EnableMemoryMappedMode(&hospi1);
-//   printf("Mem Map: %s \r\n", (ret ? "Fail" : "Success"));
-//
-//   uint32_t addressToRead = 0x90001450;
-//   while (1)
-//   {
-//     printf("Tick %d \r\n", (int)HAL_GetTick());
-//     // print value at 0x90001450
-//     printf("Value at 0x90001450: %c \r\n", *(uint8_t *)addressToRead);
-//     addressToRead++;;
-//     HAL_Delay(1000);
+  // HAL_StatusTypeDef ret = 0;
+  // ret = W25Q64_OCTO_SPI_Init(&hospi1);
+  // if (ret != HAL_OK)
+  // {
+  //   while (1)
+  //   {
+  //     // volatile asm break point
+  //     ASM_BREAKPOINT();
+  //   }
+  // }
+
+  // HAL_Delay(500);
+  // // ret=W25Q64_OSPI_Erase_Chip(&hospi1);
+  // ret = W25Q64_OSPI_EraseSector(&hospi1, 0, W25Q_SECTOR_SIZE);
+
+  // HAL_Delay(500);
+  // // fill txbuff with 0x42 using memset
+  // // memset(txbuff, 0x42, sizeof(txbuff));
+  // uint8_t rxbuff[W25Q_PAGE_SIZE];
+  // uint8_t txbuff[] = "Edwin amaya";
+  // ret = W25Q64_OSPI_Write(&hospi1, txbuff, 0, sizeof(txbuff));
+  // HAL_Delay(500);
+  // ret = W25Q64_OSPI_EnableMemoryMappedMode(&hospi1);
+  // HAL_Delay(1000);
+  // uint32_t address = 0x90000000;
+
+  // while (1)
+  // {
+  //   printf("TIck: %d\n", (int)HAL_GetTick());
+  //   // print char value starting at  0x90000000
+  //   printf("Address: %x, Value: %c %d\n", address, *((char *)address), *((uint8_t *)address));
+  //   address++;
+  //   HAL_Delay(500);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-//   }
+  // }
   /* USER CODE END 3 */
 }
 

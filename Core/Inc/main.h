@@ -31,7 +31,6 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -54,7 +53,7 @@ void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
 void SystemClock_Config(void);
-void MPU_Config(void);
+
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
